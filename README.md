@@ -42,6 +42,17 @@ To run the application, you can create a main script that utilizes the `TaskCont
 python src/controller.py
 ```
 
+## Testing
+To run the tests and generate coverage reports:
+
+```bash
+# Run tests with coverage
+python -m coverage run -m pytest test_models.py -v
+
+# Generate coverage report
+python -m coverage report --show-missing
+```
+
 ## Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
 
