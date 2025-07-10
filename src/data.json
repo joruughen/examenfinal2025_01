@@ -1,0 +1,59 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "nombre": "Implementar login",
+      "descripcion": "Crear sistema de autenticaci\u00f3n",
+      "usuario_creador": "dev1",
+      "rol": "programador",
+      "estado": "en_progreso",
+      "dependencias": [
+        2
+      ],
+      "usuarios_asignados": [
+        {
+          "usuario": "dev1",
+          "rol": "programador"
+        },
+        {
+          "usuario": "dev2",
+          "rol": "pruebas"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Implementar login",
+      "descripcion": "Crear sistema de autenticaci\u00f3n",
+      "usuario_creador": "dev2",
+      "rol": "programador",
+      "estado": "nueva",
+      "dependencias": [],
+      "usuarios_asignados": [
+        {
+          "usuario": "dev2",
+          "rol": "programador"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "alias": "dev1",
+      "nombre": "Juan P\u00e9rez",
+      "tareas_asignadas": [
+        1
+      ]
+    },
+    {
+      "alias": "dev2",
+      "nombre": "Mar\u00eda Garc\u00eda",
+      "tareas_asignadas": [
+        2,
+        1
+      ]
+    }
+  ],
+  "assignments": [],
+  "next_task_id": 3
+}

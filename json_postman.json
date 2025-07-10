@@ -1,0 +1,416 @@
+{
+  "info": {
+    "name": "Task System API",
+    "description": "API para sistema de gestión de tareas - Examen Final IS1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Usuarios",
+      "item": [
+        {
+          "name": "Crear Usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contacto\": \"dev1\",\n  \"nombre\": \"Juan Pérez\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Usuario con Tareas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/usuarios/mialias=dev1",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios", "mialias=dev1"]
+            }
+          }
+        },
+        {
+          "name": "Crear Segundo Usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contacto\": \"dev2\",\n  \"nombre\": \"María García\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Tareas",
+      "item": [
+        {
+          "name": "Crear Tarea",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Implementar login\",\n  \"descripcion\": \"Crear sistema de autenticación\",\n  \"usuario\": \"dev1\",\n  \"rol\": \"programador\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks",
+              "host": ["{{base_url}}"],
+              "path": ["tasks"]
+            }
+          }
+        },
+        {
+          "name": "Crear Segunda Tarea",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Testing login\",\n  \"descripcion\": \"Probar sistema de autenticación\",\n  \"usuario\": \"dev2\",\n  \"rol\": \"pruebas\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks",
+              "host": ["{{base_url}}"],
+              "path": ["tasks"]
+            }
+          }
+        },
+        {
+          "name": "Cambiar Estado Tarea",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"en_progreso\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "1"]
+            }
+          }
+        },
+        {
+          "name": "Finalizar Tarea",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"finalizada\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/2",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "2"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Gestión de Usuarios en Tareas",
+      "item": [
+        {
+          "name": "Asignar Usuario a Tarea",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario\": \"dev2\",\n  \"rol\": \"pruebas\",\n  \"accion\": \"adicionar\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1/users",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "1", "users"]
+            }
+          }
+        },
+        {
+          "name": "Remover Usuario de Tarea",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario\": \"dev2\",\n  \"accion\": \"remover\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1/users",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "1", "users"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Gestión de Dependencias",
+      "item": [
+        {
+          "name": "Agregar Dependencia",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dependencytaskid\": 2,\n  \"accion\": \"adicionar\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1/dependencies",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "1", "dependencies"]
+            }
+          }
+        },
+        {
+          "name": "Remover Dependencia",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dependencytaskid\": 2,\n  \"accion\": \"remover\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1/dependencies",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "1", "dependencies"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Casos de Error 422",
+      "item": [
+        {
+          "name": "Estado Inválido (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"estado_inexistente\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "1"]
+            }
+          }
+        },
+        {
+          "name": "Rol Inválido (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario\": \"dev2\",\n  \"rol\": \"rol_inexistente\",\n  \"accion\": \"adicionar\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1/users",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "1", "users"]
+            }
+          }
+        },
+        {
+          "name": "Transición Estado Inválida (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"nueva\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/2",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "2"]
+            },
+            "description": "NOTA: Ejecutar después de cambiar la tarea 2 a 'finalizada' para obtener error 422"
+          }
+        },
+        {
+          "name": "Usuario Duplicado (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario\": \"dev1\",\n  \"rol\": \"pruebas\",\n  \"accion\": \"adicionar\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1/users",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "1", "users"]
+            },
+            "description": "Error: Usuario ya está asignado a la tarea"
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Casos de Error 404",
+      "item": [
+        {
+          "name": "Usuario Inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/usuarios/mialias=usuario_inexistente",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios", "mialias=usuario_inexistente"]
+            }
+          }
+        },
+        {
+          "name": "Tarea Inexistente (404)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"en_progreso\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/999",
+              "host": ["{{base_url}}"],
+              "path": ["tasks", "999"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Endpoints Adicionales",
+      "item": [
+        {
+          "name": "Listar Todos los Usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Listar Todas las Tareas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/tasks",
+              "host": ["{{base_url}}"],
+              "path": ["tasks"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}
